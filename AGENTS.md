@@ -38,17 +38,19 @@ Two facts dominate everything else:
    Building against a different SDK can change/crash behaviour. The
    experiments branch (`legacy`) is not used here.
 
-## Module inventory (expected, not yet playtest-confirmed)
+## Module inventory (playtest-confirmed 2026-10-22; log `XexLoadImage` lines
+## are ground truth)
 
 | File | Source | In-game mode name |
 | --- | --- | --- |
-| `dat12.bin` | disc | TBD (record from playtest, then update the table + README) |
-| `dat112.bin` | disc | TBD |
-| `dat163.bin` | disc | TBD |
-| `dat111.bin` | DLC (`00000002` content, id `54EE4F5841C0CC45B07AB01E85B35FD8FC743D0243`) | TBD |
+| `dat163.bin` | disc | **Novice ver** (loads first) |
+| `dat12.bin` | disc | **360 ver** |
+| `dat112.bin` | disc | **Arrange ver** |
+| `dat111.bin` | DLC (`00000002` content, id `54EE4F5841C0CC45B07AB01E85B35FD8FC743D0243`) | **1.5 ver** — the game mounts it through its OWN content package (`ver15:\dat111.bin`) |
 
-No reliable 1:1 mapping between in-game labels and module names is assumed;
-the log's `XexLoadImage('…')` lines are ground truth.
+Switching semantics: strictly unload→load (dfkbl-like) — every unload
+logged `recomp=found module_libraries=1`, no futari-style base-overlap hook
+needed.
 
 ## Layout
 

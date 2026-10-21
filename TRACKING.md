@@ -166,16 +166,73 @@ authoritative history for every convention cited below.
 - Gate now: validation OK (69 allowed, 266 switch-traps informational).
 - Status: incremental rebuild + commit; first playtest next.
 
-## Known-unknowns going into playtest (do not assume — verify)
-- Module → in-game mode-name mapping (all four) — record from `XexLoadImage`
-  log lines during playtest, then update AGENTS.md table.
-- Whether the modules are strictly mutually exclusive (mode menu unload
-  first, dfkbl-like) or hot-swapped on a shared slot (futari-like; would
-  need porting futari's `src/futari_mod_swap_fix.cpp` hook pattern). Watch
-  the first mode-switch playtest for "base overlap" refusal logs.
-- Whether `gpu_allow_invalid_fetch_constants = true` is needed (dfkbl
-  template ships it; harmless there; verify mushi's GPU error log later).
-- Whether the DLC path needs any entrypoint-side register beyond the static
-  hint pass (futari hit a virtual-dispatch-thunk gap near
-  `XamBackgroundDownloadSetMode STUB` on its DLC route — same engine
-  family, watch for the same class).
+## Iteration 5 (2026-10-22) — first playtest: all four modes clean; DLC verified
+
+User playtested across two decorator runs. Evidence from
+`logs/mushi.log`:
+
+- **Module → mode mapping, from `XexLoadImage` ground truth** (chronological
+  Novice → 360 → Arrange → 1.5 driven session):
+  - `dat163.bin` = **Novice ver** (first load, `game:\dat163.bin`)
+  - `dat12.bin` = **360 ver**
+  - `dat112.bin` = **Arrange ver**
+  - `dat111.bin` = **1.5 ver (DLC)** — and crucially it is loaded through
+    the game's own content mount: `XexLoadImage('ver15:\dat111.bin')`.
+    The staged `00000002` package (328-byte raw header + `FFFFFFFF`
+    license tail at 328) enumerated and mounted with NO `license_mask`
+    cvar — the futari recipe transplanted cleanly.
+- **Module switching = strict unload→load** — `UnloadUserModule(...):
+  recomp=found module_libraries=1` logged before every switch, no
+  futari-style shared-slot hot-swap behavior, no base-overlap refusals.
+  The futari `*_mod_swap_fix` hook pattern is NOT needed for this title.
+- **Recompiler: zero runtime traps** in either session — no REX_FATAL,
+  no `0xC000001D`, no unregistered-call fatalities. The 69 triaged shell
+  sites and 266 informational switch-traps were never hit in the tested
+  paths (title screen, all four mode entries, mode switching, save +
+  replay save, Xenia-Canary replay import/play). Allowlist stays as-is;
+  verifying deeper single-mode content (branch-table-heavy code) remains
+  the standing gate for future sessions.
+- **GPU error burst at Novice startup** — one repeated identical draw,
+  26 lines at `05:11:54` and `05:25:10` and `05:32:14` (all three runs),
+  all token-identified as
+  `Unsupported resolve vertex buffer format (vf0: type=2, size=14409729, address=0x22800000, endian=2)`
+  + `PM4_DRAW_INDX(3, 4, 0): Failed in backend (major_mode=0,
+  explicit_major=0, path_select=0, tess_mode=1, edram_mode=6)`, rate-limited
+  after. It only fires within ~20ms of the Novice module's first frame; the
+  other three modes emit zero GPU errors. No visual damage reported and no
+  crash in any of the three runs. Treat as an open, non-critical GPU item:
+  `k_1_REVERSE` rendering path may be in that draw — dfkbl
+  XENIA_CANARY_SLOWDOWN/FINDINGS precedent suggests tracing the fetch
+  constant before touching anything.
+- **One benign kernel noise line**: `Unimplemented XLIVEBASE message
+  app=000000FC, msg=0005000C` once per run — no gameplay effect.
+- **Live-config save verified in the wild**: closing the game rewrites
+  `mushi.toml` diff-only — `d3d12_submit_on_primary_buffer_end` correctly
+  absent (= default = the slowdown fix active), keybinds persisted.
+  A diagnostics `log_level = "info"` pin was applied to the live config
+  for the evidence run and reverted to `"error"` afterwards (left as an
+  explicit non-default line so future saves keep it).
+- Status: skeleton→codegen→hints→triage→playtest loop CLOSED for the
+  first confirmed session. Remaining standing items: the Novice startup
+  GPU draw (open, inert), deeper single-mode play to exercise unresolved
+  triaged clusters, and the sibling-port backport of the config-staging
+  fix (separate commits in futari/dfkbl repos — the AGENTS.md-hosted plan
+  covers it under "Config-file staging project convention").
+
+## Known-unknowns status (post-playtest)
+
+- ~~Module → mode mapping~~ — RESOLVED (AGENTS.md table, from the
+  `XexLoadImage` log).
+- ~~Module hot-swap semantics~~ — RESOLVED: strict unload→load.
+- ~~DLC extra entrypoint-side registration~~ — RESOLVED: none needed; the
+  DLC module loads through the staged content package (`ver15:`) after
+  only the static hint pass.
+- `gpu_allow_invalid_fetch_constants = true` stays as-is (carried from the
+  dfkbl template; the only GPU error observed is the Novice-startup burst
+  which is neither fatal nor visually damaging). Revisit only if a visual
+  regression shows up.
+- The three unresolved-`b`-target clusters / 69 triaged gate sites —
+  unreached in the tested paths; re-verify with deeper single-mode play
+  (long sessions, stage progression, replays across modes).
+- Sibling-port config-staging backport (futari + dfkbl) — planned
+  follow-up, separate commits per repo.

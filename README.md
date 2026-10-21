@@ -38,16 +38,17 @@ For the engineering history (what was fixed and why), see
 ```
 game_data/
 ├─ default.xex          # entrypoint (shell)
-├─ dat12.bin            # game-mode module
-├─ dat112.bin           # game-mode module
-├─ dat163.bin           # game-mode module
+├─ dat163.bin           # mode: Novice ver
+├─ dat12.bin            # mode: 360 ver
+├─ dat112.bin           # mode: Arrange ver
 ├─ res/DISKDATA/...     # disc data
 ├─ AvatarAssetPack
 └─ nxeart
 ```
 
-The three `dat*.bin` modules are loaded mutually exclusively; all four
-(including the DLC one) share guest base `0x88000000`.
+The three `dat*.bin` modules are loaded mutually exclusively and swapped by
+unload→load on mode change; the fourth module (1.5 ver, DLC) shares the same
+guest base and is mounted through its own content package (`ver15:`).
 
 ### DLC (optional but recommended)
 
@@ -192,13 +193,20 @@ Two facts carried over from the sibling projects:
 ## Known issues
 
 See [TRACKING.md](TRACKING.md) for the current open items and the
-playtest-driven iteration log. Known inherited-of-class items to watch for:
-- imported-save/replay enumeration behavior is handled by the SDK
-  (pristine mainline plus the STFS-header fix); report regressions.
-- The game ships four mutually-exclusive modules on one guest base; any
-  in-app module switching behavior that leaks resident modules surfaces as
-  a base-overlap failure (see futari's TRACKING.md iteration 13 for the
-  sister-project handling).
+playtest-driven iteration log. Status after the first confirmed playtest
+(all four modes exercised, saves/replays incl. a Xenia-Canary-saved replay
+verified):
+
+- imports of Xenia Canary saves/replays enumerate and load as-is
+  (SDK STFS-header acceptance fix also used by the shipped DLC content).
+- module switching is verified strict unload→load with all four modules
+  (no resident-module base-overlap concern observed).
+- one known inert GPU draw at **Novice (dat163) startup**: a repeated
+  `Unsupported resolve vertex buffer format` / `PM4_DRAW_INDX failed`
+  burst the moment the mode first renders, rate-limited for the rest of
+  the run, no visual impact and no crash. Recorded in TRACKING as an open
+  GPU item (frames may skip a silent effect - watch for missing Novice
+  startup effects).
 
 ## Credits & legal
 

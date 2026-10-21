@@ -1,0 +1,50 @@
+# mushi - ReXGlue codegen manifest.
+#
+# The entrypoint is the XEX; the four game-mode modules are Cave's shipped
+# binaries loaded mutually exclusively (three on disc, one delivered as DLC
+# content). All four share guest base 0x88000000, so codegen runs one target
+# per invocation (see scripts/codegen_all.ps1) and two generated glue files
+# are hand-merged (generated/default/dll_targets.cmake, module_registry.cpp).
+#
+# The DLC module's binary is a LOCAL, gitignored staging copy of the Xenia
+# content package
+# (user_data/0000000000000000/435A07E3/00000002/54EE4F5841C0CC45B07AB01E85B35FD8FC743D0243/dat111.bin
+# -> game_data/dat111.bin): codegen needs the file at a stable path. The
+# runtime resolves the DLC module through the content mount; guest_path/
+# file_path here are codegen-only input (module recomp is matched by
+# filename, pinned in the SDK fork's FoundRecompiledModule fix).
+
+[project]
+name = "mushi"
+sdk_version = "0.10.0"
+game_root = "game_data"
+
+[entrypoint]
+file_path = "game_data/default.xex"
+out_directory_path = "generated/default"
+includes = ["mushi_functions.toml"]
+
+[[modules]]
+guest_path = "dat12.bin"
+file_path = "game_data/dat12.bin"
+out_directory_path = "generated/dat12"
+includes = ["mushi_dat12_functions.toml"]
+
+[[modules]]
+guest_path = "dat112.bin"
+file_path = "game_data/dat112.bin"
+out_directory_path = "generated/dat112"
+includes = ["mushi_dat112_functions.toml"]
+
+[[modules]]
+guest_path = "dat163.bin"
+file_path = "game_data/dat163.bin"
+out_directory_path = "generated/dat163"
+includes = ["mushi_dat163_functions.toml"]
+
+# DLC-delivered game-mode module (content type 00000002).
+[[modules]]
+guest_path = "dat111.bin"
+file_path = "game_data/dat111.bin"
+out_directory_path = "generated/dat111"
+includes = ["mushi_dat111_functions.toml"]

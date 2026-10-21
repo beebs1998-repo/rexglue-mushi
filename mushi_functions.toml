@@ -1,0 +1,5 @@
+# Dynamic entrypoints for the mushi entrypoint XEX.
+# Populate when playtesting hits
+# "[FATAL] Call to invalid or unregistered function at guest address 0x..."
+# AFTER the static hint pass (scripts/build_module_hints.ps1) did not cover
+# the address (see AGENTS.md).

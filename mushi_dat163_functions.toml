@@ -1,0 +1,3 @@
+# Per-module dynamic entrypoint overrides for dat163.bin.
+# Populate when playtesting hits an unregistered-function or stub trap
+# inside this module (see AGENTS.md).

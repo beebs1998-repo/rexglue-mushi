@@ -1,0 +1,54 @@
+# mushi.toml - settings template (the game writes/reads mushi.toml next to the exe).
+#
+# The live copy lives next to mushi.exe (out/build/win-amd64-release/mushi.toml,
+# or wherever the exe and DLLs are) and is staged from this template on the first
+# build/launch (scripts/stage_config.cmake + launch.bat), copy-if-missing: the
+# live file is never overwritten by a build, so F4 saves and local edits survive.
+# Editing this template after the live copy exists does NOT propagate - delete
+# the live copy or re-edit via F4 to re-sync.
+#
+# Saves are diff-only: default-equal cvars are omitted.
+# d3d12_submit_on_primary_buffer_end = false is the validated slowdown fix
+# (per-game XENIA_CANARY / rexglue transfer validated on Mushihimesama
+# 435A07E3; SDK default flipped to false in beebs1998-repo/rexglue-sdk main),
+# so its line is normally absent from a written file: absence == default ==
+# fix active. The explicit line below pins it for stale-SDK safety.
+d3d12_submit_on_primary_buffer_end = false
+# Deployed-release logging: a fixed rotating file instead of the default
+# sequential mushi_NNN.log naming, which mints a new file every session and
+# never prunes old ones (unbounded disk growth). This caps logs at ~12 MB
+# total while keeping [error]/[critical] lines for crash diagnosis. Per-run
+# capture is still available via --log-level/--log-file on the command line.
+log_file = "logs/mushi.log"
+log_max_file_size_mb = 4
+log_max_files = 3
+log_level = "error"
+
+window_width = 1280
+window_height = 720
+fullscreen = false
+gpu_plugin = "xenos"
+gpu_allow_invalid_fetch_constants = true
+mnk_mode = true
+keybind_a = "Z"
+keybind_b = "X"
+keybind_x = "C"
+keybind_y = "A"
+keybind_left_shoulder = "Q"
+keybind_right_shoulder = "W"
+keybind_lstick_up = "Up"
+keybind_lstick_down = "Down"
+keybind_lstick_left = "Left"
+keybind_lstick_right = "Right"
+keybind_lstick_press = "U"
+keybind_rstick_up = "Numpad8"
+keybind_rstick_down = "Numpad5"
+keybind_rstick_left = "Numpad4"
+keybind_rstick_right = "Numpad6"
+keybind_rstick_press = "O"
+keybind_dpad_up = "I"
+keybind_dpad_down = "K"
+keybind_dpad_left = "J"
+keybind_dpad_right = "L"
+keybind_back = "Tab"
+keybind_start = "1"

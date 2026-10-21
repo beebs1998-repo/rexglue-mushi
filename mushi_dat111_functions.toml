@@ -1,0 +1,4 @@
+# Per-module dynamic entrypoint overrides for dat111.bin (the DLC-delivered
+# game-mode module; content type 00000002, content id 54EE4F58...).
+# Populate when playtesting hits an unregistered-function or stub trap
+# inside this module (see AGENTS.md).

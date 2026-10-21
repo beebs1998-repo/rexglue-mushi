@@ -34146,7 +34146,10 @@ DEFINE_REX_FUNC(sub_82363BB8) {
 	// cmplwi cr6,r3,61
 	ctx.cr6.compare<uint32_t>(ctx.r3.u32, 61, ctx.xer);
 	// bgt cr6,0x82363c18
-	if (ctx.cr6.gt) goto loc_82363C18;
+	if (ctx.cr6.gt) {
+		sub_82363C18(ctx, base);
+		return;
+	}
 	// lis r12,-32248
 	ctx.r12.s64 = -2113404928;
 	// addi r12,r12,-31080
@@ -34166,167 +34169,194 @@ DEFINE_REX_FUNC(sub_82363BB8) {
 	// bctr 
 	switch (ctx.r3.u32) {
 	case 0:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 1:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 2:
-		goto loc_82363BE8;
+		sub_82363BE8(ctx, base);
+		return;
 	case 3:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 4:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 5:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 6:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 7:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 8:
-		goto loc_82363BE8;
+		sub_82363BE8(ctx, base);
+		return;
 	case 9:
-		goto loc_82363BE8;
+		sub_82363BE8(ctx, base);
+		return;
 	case 10:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 11:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 12:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 13:
-		goto loc_82363C18;
+		sub_82363C18(ctx, base);
+		return;
 	case 14:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 15:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 16:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 17:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 18:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 19:
-		goto loc_82363C08;
+		sub_82363C08(ctx, base);
+		return;
 	case 20:
-		goto loc_82363C08;
+		sub_82363C08(ctx, base);
+		return;
 	case 21:
-		goto loc_82363C18;
+		sub_82363C18(ctx, base);
+		return;
 	case 22:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 23:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 24:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 25:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 26:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 27:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 28:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 29:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 30:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 31:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 32:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 33:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 34:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 35:
-		goto loc_82363C08;
+		sub_82363C08(ctx, base);
+		return;
 	case 36:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 37:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 38:
-		goto loc_82363C08;
+		sub_82363C08(ctx, base);
+		return;
 	case 39:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 40:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 41:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 42:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 43:
-		goto loc_82363BE8;
+		sub_82363BE8(ctx, base);
+		return;
 	case 44:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 45:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 46:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 47:
-		goto loc_82363BF0;
+		sub_82363BF0(ctx, base);
+		return;
 	case 48:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 49:
-		goto loc_82363C08;
+		sub_82363C08(ctx, base);
+		return;
 	case 50:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 51:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 52:
-		goto loc_82363C08;
+		sub_82363C08(ctx, base);
+		return;
 	case 53:
-		goto loc_82363C08;
+		sub_82363C08(ctx, base);
+		return;
 	case 54:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 55:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 56:
-		goto loc_82363BF8;
+		sub_82363BF8(ctx, base);
+		return;
 	case 57:
-		goto loc_82363C10;
+		sub_82363C10(ctx, base);
+		return;
 	case 58:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 59:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 60:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	case 61:
-		goto loc_82363C00;
+		sub_82363C00(ctx, base);
+		return;
 	default:
 		__builtin_trap(); // Switch case out of range
 	}
-loc_82363BE8:
-	// li r3,1
-	ctx.r3.s64 = 1;
-	// blr 
-	return;
-loc_82363BF0:
-	// li r3,2
-	ctx.r3.s64 = 2;
-	// blr 
-	return;
-loc_82363BF8:
-	// li r3,4
-	ctx.r3.s64 = 4;
-	// blr 
-	return;
-loc_82363C00:
-	// li r3,8
-	ctx.r3.s64 = 8;
-	// blr 
-	return;
-loc_82363C08:
-	// li r3,16
-	ctx.r3.s64 = 16;
-	// blr 
-	return;
-loc_82363C10:
-	// li r3,12
-	ctx.r3.s64 = 12;
-	// blr 
-	return;
-loc_82363C18:
-	// li r3,0
-	ctx.r3.s64 = 0;
-	// blr 
-	return;
 }
 
 DEFINE_REX_FUNC(sub_82364870) {

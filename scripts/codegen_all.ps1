@@ -72,7 +72,7 @@ foreach ($target in @('dat12', 'dat112', 'dat163', 'dat111')) {
 }
 
 # codegen rewrites these with only the targets from the last run. Restore the
-# project-maintained merged versions (all three modules together) and the
+# project-maintained merged versions (all four modules together) and the
 # auto-codegen-disabled rexglue.cmake.
 Write-Host "=== restoring project-maintained glue files ==="
 git checkout -- `

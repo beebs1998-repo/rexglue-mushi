@@ -2,13 +2,18 @@
 
 #include "mushi_pch.h"
 
+DECLARE_REX_FUNC(__imp__KeGetCurrentProcessType);
 DECLARE_REX_FUNC(__imp__NtAllocateVirtualMemory);
+DECLARE_REX_FUNC(__imp__NtFreeVirtualMemory);
+DECLARE_REX_FUNC(__imp__NtQueryVirtualMemory);
 DECLARE_REX_FUNC(__imp__RtlEnterCriticalSection);
+DECLARE_REX_FUNC(__imp__RtlInitializeCriticalSection);
 DECLARE_REX_FUNC(__imp__RtlLeaveCriticalSection);
 DECLARE_REX_FUNC(__restgprlr_14);
 DECLARE_REX_FUNC(__restgprlr_15);
 DECLARE_REX_FUNC(__restgprlr_16);
 DECLARE_REX_FUNC(__restgprlr_19);
+DECLARE_REX_FUNC(__restgprlr_20);
 DECLARE_REX_FUNC(__restgprlr_21);
 DECLARE_REX_FUNC(__restgprlr_22);
 DECLARE_REX_FUNC(__restgprlr_23);
@@ -219,6 +224,8 @@ DECLARE_REX_FUNC(sub_88134E20);
 DECLARE_REX_FUNC(sub_88135330);
 DECLARE_REX_FUNC(sub_88135348);
 DECLARE_REX_FUNC(sub_88135398);
+DECLARE_REX_FUNC(sub_88136320);
 DECLARE_REX_FUNC(sub_8813B410);
 DECLARE_REX_FUNC(sub_8813BC20);
+DECLARE_REX_FUNC(sub_8813C498);
 DECLARE_REX_FUNC(sub_8813CBA8);

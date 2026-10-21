@@ -822,7 +822,10 @@ DEFINE_REX_FUNC(sub_820A6808) {
 	// cmplwi cr6,r11,93
 	ctx.cr6.compare<uint32_t>(ctx.r11.u32, 93, ctx.xer);
 	// bgt cr6,0x820a69e4
-	if (ctx.cr6.gt) goto loc_820A69E4;
+	if (ctx.cr6.gt) {
+		sub_820A69E4(ctx, base);
+		return;
+	}
 	// lis r12,-32246
 	ctx.r12.s64 = -2113273856;
 	// rlwinm r0,r11,2,0,29
@@ -836,193 +839,286 @@ DEFINE_REX_FUNC(sub_820A6808) {
 	// bctr 
 	switch (ctx.r11.u32) {
 	case 0:
-		goto loc_820A69B4;
+		sub_820A69B4(ctx, base);
+		return;
 	case 1:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 2:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 3:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 4:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 5:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 6:
-		goto loc_820A69B4;
+		sub_820A69B4(ctx, base);
+		return;
 	case 7:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 8:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 9:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 10:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 11:
-		goto loc_820A69B4;
+		sub_820A69B4(ctx, base);
+		return;
 	case 12:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 13:
-		goto loc_820A69C0;
+		sub_820A69C0(ctx, base);
+		return;
 	case 14:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 15:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 16:
-		goto loc_820A69CC;
+		sub_820A69CC(ctx, base);
+		return;
 	case 17:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 18:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 19:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 20:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 21:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 22:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 23:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 24:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 25:
-		goto loc_820A69C0;
+		sub_820A69C0(ctx, base);
+		return;
 	case 26:
-		goto loc_820A69C0;
+		sub_820A69C0(ctx, base);
+		return;
 	case 27:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 28:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 29:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 30:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 31:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 32:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 33:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 34:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 35:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 36:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 37:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 38:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 39:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 40:
-		goto loc_820A69CC;
+		sub_820A69CC(ctx, base);
+		return;
 	case 41:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 42:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 43:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 44:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 45:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 46:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 47:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 48:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 49:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 50:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 51:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 52:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 53:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 54:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 55:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 56:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 57:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 58:
-		goto loc_820A69CC;
+		sub_820A69CC(ctx, base);
+		return;
 	case 59:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 60:
-		goto loc_820A69CC;
+		sub_820A69CC(ctx, base);
+		return;
 	case 61:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 62:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 63:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 64:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 65:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 66:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 67:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 68:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 69:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 70:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 71:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 72:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 73:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 74:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 75:
-		goto loc_820A69CC;
+		sub_820A69CC(ctx, base);
+		return;
 	case 76:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 77:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 78:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 79:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 80:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 81:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 82:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 83:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	case 84:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 85:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 86:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 87:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 88:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 89:
-		goto loc_820A69E4;
+		sub_820A69E4(ctx, base);
+		return;
 	case 90:
-		goto loc_820A69CC;
+		sub_820A69CC(ctx, base);
+		return;
 	case 91:
 		goto loc_820A69A8;
 	case 92:
-		goto loc_820A69CC;
+		sub_820A69CC(ctx, base);
+		return;
 	case 93:
-		goto loc_820A69D8;
+		sub_820A69D8(ctx, base);
+		return;
 	default:
 		__builtin_trap(); // Switch case out of range
 	}
@@ -1032,51 +1128,6 @@ loc_820A69A8:
 	// lfs f1,-31800(r11)
 	ctx.fpscr.disableFlushMode();
 	temp.u32 = REX_LOAD_U32(ctx.r11.u32 + -31800);
-	ctx.f1.f64 = double(temp.f32);
-	// blr 
-	return;
-loc_820A69B4:
-	// lis r11,-32255
-	ctx.r11.s64 = -2113863680;
-	// lfs f1,-31672(r11)
-	ctx.fpscr.disableFlushMode();
-	temp.u32 = REX_LOAD_U32(ctx.r11.u32 + -31672);
-	ctx.f1.f64 = double(temp.f32);
-	// blr 
-	return;
-loc_820A69C0:
-	// lis r11,-32255
-	ctx.r11.s64 = -2113863680;
-	// lfs f1,-31728(r11)
-	ctx.fpscr.disableFlushMode();
-	temp.u32 = REX_LOAD_U32(ctx.r11.u32 + -31728);
-	ctx.f1.f64 = double(temp.f32);
-	// blr 
-	return;
-loc_820A69CC:
-	// lis r11,-32255
-	ctx.r11.s64 = -2113863680;
-	// lfs f1,-31720(r11)
-	ctx.fpscr.disableFlushMode();
-	temp.u32 = REX_LOAD_U32(ctx.r11.u32 + -31720);
-	ctx.f1.f64 = double(temp.f32);
-	// blr 
-	return;
-loc_820A69D8:
-	// lis r11,-32256
-	ctx.r11.s64 = -2113929216;
-	// lfs f1,32188(r11)
-	ctx.fpscr.disableFlushMode();
-	temp.u32 = REX_LOAD_U32(ctx.r11.u32 + 32188);
-	ctx.f1.f64 = double(temp.f32);
-	// blr 
-	return;
-loc_820A69E4:
-	// lis r11,-32255
-	ctx.r11.s64 = -2113863680;
-	// lfs f1,-31528(r11)
-	ctx.fpscr.disableFlushMode();
-	temp.u32 = REX_LOAD_U32(ctx.r11.u32 + -31528);
 	ctx.f1.f64 = double(temp.f32);
 	// blr 
 	return;

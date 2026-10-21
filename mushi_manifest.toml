@@ -28,23 +28,23 @@ includes = ["mushi_hints.toml", "mushi_functions.toml"]
 guest_path = "dat12.bin"
 file_path = "game_data/dat12.bin"
 out_directory_path = "generated/dat12"
-includes = ["mushi_dat12_functions.toml"]
+includes = ["mushi_dat12_hints.toml", "mushi_dat12_functions.toml"]
 
 [[modules]]
 guest_path = "dat112.bin"
 file_path = "game_data/dat112.bin"
 out_directory_path = "generated/dat112"
-includes = ["mushi_dat112_functions.toml"]
+includes = ["mushi_dat112_hints.toml", "mushi_dat112_functions.toml"]
 
 [[modules]]
 guest_path = "dat163.bin"
 file_path = "game_data/dat163.bin"
 out_directory_path = "generated/dat163"
-includes = ["mushi_dat163_functions.toml"]
+includes = ["mushi_dat163_hints.toml", "mushi_dat163_functions.toml"]
 
 # DLC-delivered game-mode module (content type 00000002).
 [[modules]]
 guest_path = "dat111.bin"
 file_path = "game_data/dat111.bin"
 out_directory_path = "generated/dat111"
-includes = ["mushi_dat111_functions.toml"]
+includes = ["mushi_dat111_hints.toml", "mushi_dat111_functions.toml"]

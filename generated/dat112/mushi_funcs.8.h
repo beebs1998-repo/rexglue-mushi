@@ -2,14 +2,20 @@
 
 #include "mushi_pch.h"
 
+DECLARE_REX_FUNC(__imp__KeGetCurrentProcessType);
+DECLARE_REX_FUNC(__imp__NtAllocateVirtualMemory);
+DECLARE_REX_FUNC(__imp__NtFreeVirtualMemory);
+DECLARE_REX_FUNC(__imp__NtQueryVirtualMemory);
 DECLARE_REX_FUNC(__imp__RtlFreeAnsiString);
 DECLARE_REX_FUNC(__imp__RtlInitUnicodeString);
+DECLARE_REX_FUNC(__imp__RtlInitializeCriticalSection);
 DECLARE_REX_FUNC(__imp__RtlLeaveCriticalSection);
 DECLARE_REX_FUNC(__imp__RtlUnicodeStringToAnsiString);
 DECLARE_REX_FUNC(__restgprlr_16);
 DECLARE_REX_FUNC(__restgprlr_17);
 DECLARE_REX_FUNC(__restgprlr_18);
 DECLARE_REX_FUNC(__restgprlr_19);
+DECLARE_REX_FUNC(__restgprlr_20);
 DECLARE_REX_FUNC(__restgprlr_21);
 DECLARE_REX_FUNC(__restgprlr_22);
 DECLARE_REX_FUNC(__restgprlr_23);
@@ -23,6 +29,7 @@ DECLARE_REX_FUNC(__savegprlr_16);
 DECLARE_REX_FUNC(__savegprlr_17);
 DECLARE_REX_FUNC(__savegprlr_18);
 DECLARE_REX_FUNC(__savegprlr_19);
+DECLARE_REX_FUNC(__savegprlr_20);
 DECLARE_REX_FUNC(__savegprlr_21);
 DECLARE_REX_FUNC(__savegprlr_22);
 DECLARE_REX_FUNC(__savegprlr_23);
@@ -207,6 +214,7 @@ DECLARE_REX_FUNC(sub_88134B60);
 DECLARE_REX_FUNC(sub_88134CC0);
 DECLARE_REX_FUNC(sub_88134D88);
 DECLARE_REX_FUNC(sub_881350B0);
+DECLARE_REX_FUNC(sub_88135150);
 DECLARE_REX_FUNC(sub_88135578);
 DECLARE_REX_FUNC(sub_88135588);
 DECLARE_REX_FUNC(sub_881367D8);
@@ -218,6 +226,7 @@ DECLARE_REX_FUNC(sub_88136ED0);
 DECLARE_REX_FUNC(sub_88136F00);
 DECLARE_REX_FUNC(sub_88137588);
 DECLARE_REX_FUNC(sub_88139CE8);
+DECLARE_REX_FUNC(sub_8813B228);
 DECLARE_REX_FUNC(sub_8813D3D8);
 DECLARE_REX_FUNC(sub_8813D4F8);
 DECLARE_REX_FUNC(sub_8813D568);

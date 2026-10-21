@@ -3,3 +3,39 @@
 # "[FATAL] Call to invalid or unregistered function at guest address 0x..."
 # AFTER the static hint pass (scripts/build_module_hints.ps1) did not cover
 # the address (see AGENTS.md).
+
+# Bootstrap seeds (initial codegen validation): 10 direct `b` targets in the
+# shell code range that XenonRecomp's PDATA/bl-scan does not detect as function
+# starts either (same resolution dfkbl uses for 0x820A4554 et al. in its
+# curated ep file). The clean-codegen leg of scripts/build_module_hints.ps1
+# revalidates the entrypoint with ONLY this file in its include list, so these
+# must live here rather than in mushi_hints.toml.
+[functions."0x82095120"]
+name = "sub_82095120"
+
+[functions."0x82095128"]
+name = "sub_82095128"
+
+[functions."0x82096B28"]
+name = "sub_82096B28"
+
+[functions."0x82095138"]
+name = "sub_82095138"
+
+[functions."0x820963E0"]
+name = "sub_820963E0"
+
+[functions."0x820963D8"]
+name = "sub_820963D8"
+
+[functions."0x820AA458"]
+name = "sub_820AA458"
+
+[functions."0x820B7C40"]
+name = "sub_820B7C40"
+
+[functions."0x820B7608"]
+name = "sub_820B7608"
+
+[functions."0x820963E8"]
+name = "sub_820963E8"

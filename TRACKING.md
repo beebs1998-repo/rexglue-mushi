@@ -135,6 +135,37 @@ authoritative history for every convention cited below.
 - Status: run the static hint derivation pass next (the one class the
   analyzer missed: indirect-only functions), then first playtest.
 
+## Iteration 4 (2026-10-22) — static hint pass; 69-site gate baseline triaged
+
+- `scripts/build_module_hints.ps1` full pass (XenonRecomp reference map minus
+  ReXGlue-registered, stub-filtered): modules 21–22 real hints each
+  (dat12/dat112/dat163 21, dat111 22 — symbols 1.1–1.4% of each map), shell
+  **284 real hints** from a 4,622-candidate diff against an 8,867-entry
+  registered set; ~93% of candidates were data/gap-fill misidentifications
+  (stubs), dropped by the stub filter like in the sibling ports.
+- One harness bug hit first: the pass's clean-codegen leg revalidates the
+  entrypoint with only the curated `mushi_*_functions.toml` in its include
+  list, so the 10 bootstrap shell b-target seeds had to live THERE (moved
+  out of the placeholder `mushi_hints.toml`), matching dfkbl's convention
+  for the same class (`dfkbl_functions.toml` holds 0x820A4554 et al.).
+  Manifest reverted to a bare entrypoint include list pending the real
+  hints files; after the pass, all five hints files are wired in FIRST.
+- **Embedded-trap gate after the hint regen: 69 new sites, all in the
+  `default` target** — three tight call/branch clusters (0x821CE330–
+  0x821CE8E8, 0x821D2F98–0x821D309C, 0x82363D20–0x82363FCC; targets are the
+  46 shell b addresses both analyzers refuse to call function starts) plus
+  two conditional-branch families (0x820A77A4→0x820A75CC,
+  0x820CDDB8→0x820CDBDC). Triaged into
+  `scripts/trap_allowlist.txt` via the gate's `-WriteAllowList` output —
+  the same block-twin/jump-table residue class futari TRACKING.md
+  documents and dfkbl triaged as a 145-site baseline. **Caveat recorded in
+  the allowlist header: NOT playtest-verified yet** — dfkbl cut its
+  baseline by 20 sites later (SDK branch-classification fix + one live
+  mid-block registration); mushi may get the same cut (0x820A75CC mirrors
+  dfkbl's 0x820A4554 story) once playtest proves which addresses are live.
+- Gate now: validation OK (69 allowed, 266 switch-traps informational).
+- Status: incremental rebuild + commit; first playtest next.
+
 ## Known-unknowns going into playtest (do not assume — verify)
 - Module → in-game mode-name mapping (all four) — record from `XexLoadImage`
   log lines during playtest, then update AGENTS.md table.

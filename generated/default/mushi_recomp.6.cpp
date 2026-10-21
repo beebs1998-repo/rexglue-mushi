@@ -24009,19 +24009,25 @@ DEFINE_REX_FUNC(sub_822754A8) {
 	// bctr 
 	switch (ctx.r11.u32) {
 	case 0:
-		goto loc_82275518;
+		sub_82275518(ctx, base);
+		return;
 	case 1:
-		goto loc_82275500;
+		sub_82275500(ctx, base);
+		return;
 	case 2:
-		goto loc_82275510;
+		sub_82275510(ctx, base);
+		return;
 	case 3:
-		goto loc_82275510;
+		sub_82275510(ctx, base);
+		return;
 	case 4:
 		goto loc_82275524;
 	case 5:
-		goto loc_82275510;
+		sub_82275510(ctx, base);
+		return;
 	case 6:
-		goto loc_82275510;
+		sub_82275510(ctx, base);
+		return;
 	case 7:
 		goto loc_82275524;
 	case 8:
@@ -24029,27 +24035,34 @@ DEFINE_REX_FUNC(sub_822754A8) {
 	case 9:
 		goto loc_82275524;
 	case 10:
-		goto loc_822754F0;
+		sub_822754F0(ctx, base);
+		return;
 	case 11:
 		goto loc_82275524;
 	case 12:
-		goto loc_82275500;
+		sub_82275500(ctx, base);
+		return;
 	case 13:
-		goto loc_82275508;
+		sub_82275508(ctx, base);
+		return;
 	case 14:
 		goto loc_82275524;
 	case 15:
-		goto loc_82275508;
+		sub_82275508(ctx, base);
+		return;
 	case 16:
-		goto loc_82275508;
+		sub_82275508(ctx, base);
+		return;
 	case 17:
 		goto loc_82275524;
 	case 18:
 		goto loc_82275524;
 	case 19:
-		goto loc_82275520;
+		sub_82275520(ctx, base);
+		return;
 	case 20:
-		goto loc_822754F8;
+		sub_822754F8(ctx, base);
+		return;
 	case 21:
 		goto loc_82275524;
 	case 22:
@@ -24065,7 +24078,8 @@ DEFINE_REX_FUNC(sub_822754A8) {
 	case 27:
 		goto loc_82275524;
 	case 28:
-		goto loc_822754F8;
+		sub_822754F8(ctx, base);
+		return;
 	case 29:
 		goto loc_82275524;
 	case 30:
@@ -24073,15 +24087,19 @@ DEFINE_REX_FUNC(sub_822754A8) {
 	case 31:
 		goto loc_82275524;
 	case 32:
-		goto loc_82275520;
+		sub_82275520(ctx, base);
+		return;
 	case 33:
-		goto loc_82275510;
+		sub_82275510(ctx, base);
+		return;
 	case 34:
 		goto loc_82275524;
 	case 35:
-		goto loc_822754F0;
+		sub_822754F0(ctx, base);
+		return;
 	case 36:
-		goto loc_82275520;
+		sub_82275520(ctx, base);
+		return;
 	case 37:
 		goto loc_82275524;
 	case 38:
@@ -24089,52 +24107,14 @@ DEFINE_REX_FUNC(sub_822754A8) {
 	case 39:
 		goto loc_82275524;
 	case 40:
-		goto loc_822754F8;
+		sub_822754F8(ctx, base);
+		return;
 	case 41:
-		goto loc_822754E4;
+		sub_822754E4(ctx, base);
+		return;
 	default:
 		__builtin_trap(); // Switch case out of range
 	}
-loc_822754E4:
-	// rlwinm r11,r6,2,0,29
-	ctx.r11.u64 = __builtin_rotateleft64(ctx.r6.u32 | (ctx.r6.u64 << 32), 2) & 0xFFFFFFFC;
-	// add r3,r11,r3
-	ctx.r3.u64 = ctx.r11.u64 + ctx.r3.u64;
-	// blr 
-	return;
-loc_822754F0:
-	// addi r3,r3,12
-	ctx.r3.s64 = ctx.r3.s64 + 12;
-	// blr 
-	return;
-loc_822754F8:
-	// addi r3,r3,8
-	ctx.r3.s64 = ctx.r3.s64 + 8;
-	// blr 
-	return;
-loc_82275500:
-	// addi r3,r3,20
-	ctx.r3.s64 = ctx.r3.s64 + 20;
-	// blr 
-	return;
-loc_82275508:
-	// addi r3,r3,24
-	ctx.r3.s64 = ctx.r3.s64 + 24;
-	// blr 
-	return;
-loc_82275510:
-	// addi r3,r3,16
-	ctx.r3.s64 = ctx.r3.s64 + 16;
-	// blr 
-	return;
-loc_82275518:
-	// addi r3,r3,32
-	ctx.r3.s64 = ctx.r3.s64 + 32;
-	// blr 
-	return;
-loc_82275520:
-	// addi r3,r3,4
-	ctx.r3.s64 = ctx.r3.s64 + 4;
 loc_82275524:
 	// blr 
 	return;

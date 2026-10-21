@@ -2,15 +2,19 @@
 
 #include "mushi_pch.h"
 
+DECLARE_REX_FUNC(__imp__KeBugCheckEx);
+DECLARE_REX_FUNC(__imp__KeGetCurrentProcessType);
 DECLARE_REX_FUNC(__imp__KeSetAffinityThread);
 DECLARE_REX_FUNC(__imp__NtAllocateVirtualMemory);
 DECLARE_REX_FUNC(__imp__NtCreateEvent);
 DECLARE_REX_FUNC(__imp__NtFreeVirtualMemory);
 DECLARE_REX_FUNC(__imp__ObDereferenceObject);
 DECLARE_REX_FUNC(__imp__ObReferenceObjectByHandle);
+DECLARE_REX_FUNC(__imp__RtlEnterCriticalSection);
 DECLARE_REX_FUNC(__imp__RtlFreeAnsiString);
 DECLARE_REX_FUNC(__imp__RtlInitUnicodeString);
 DECLARE_REX_FUNC(__imp__RtlLeaveCriticalSection);
+DECLARE_REX_FUNC(__imp__RtlRaiseException);
 DECLARE_REX_FUNC(__imp__RtlUnicodeStringToAnsiString);
 DECLARE_REX_FUNC(__imp__XMsgStartIORequest);
 DECLARE_REX_FUNC(__imp__XNetLogonGetTitleID);
@@ -118,6 +122,8 @@ DECLARE_REX_FUNC(sub_820EC608);
 DECLARE_REX_FUNC(sub_820EC898);
 DECLARE_REX_FUNC(sub_820ECCA0);
 DECLARE_REX_FUNC(sub_820ED400);
+DECLARE_REX_FUNC(sub_820ED568);
+DECLARE_REX_FUNC(sub_820EE988);
 DECLARE_REX_FUNC(sub_820EE9D8);
 DECLARE_REX_FUNC(sub_820EFA50);
 DECLARE_REX_FUNC(sub_820EFA60);

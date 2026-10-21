@@ -234,5 +234,9 @@ User playtested across two decorator runs. Evidence from
 - The three unresolved-`b`-target clusters / 69 triaged gate sites —
   unreached in the tested paths; re-verify with deeper single-mode play
   (long sessions, stage progression, replays across modes).
-- Sibling-port config-staging backport (futari + dfkbl) — planned
-  follow-up, separate commits per repo.
+- Sibling-port config-staging backport (futari + dfkbl) — DONE
+  (2026-10-22): futari as Iteration 24 (`fd198d4`, curated `futari.toml`
+  template + the three staging entry points); dfkbl as `eba3a09` (dfkbl
+  gates its TRACKING in an in-flight backfill of iterations 32-34, so the
+  entry there is deferred to the next TRACKING touch — the commit message
+  carries it).

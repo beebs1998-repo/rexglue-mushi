@@ -101,8 +101,41 @@ authoritative history for every convention cited below.
   dynamically populated per-title (XenonRecomp full-coverage diff); initial
   playtest next.
 
-## Known-unknowns going into playtest (do not assume — verify)
+- Status: build pending; hints derivation pass (build_module_hints.ps1)
+  queued after the build to cover the indirect-call-only function class
+  dynamically populated per-title (XenonRecomp full-coverage diff); initial
+  playtest next.
+- **DLC staged into the SDK ContentManager layout (copy, Xenia dump left
+  intact)** — 2026-10-22: package data
+  `user_data/0000000000000000/435A07E3/00000002/54EE4F5841C0CC45B07AB01E85B35FD8FC743D0243/`
+  (contains `dat111.bin`, 1843200 bytes, copied from Xenia's
+  `435A07E3/435A07E3/00000002/…` one-level-deeper dump) and header
+  `Headers/00000002/54EE4F58….header` built as the 328-byte raw
+  XCONTENT_AGGREGATE_DATA dump + 4-byte `0xFFFFFFFF` license tail (file is
+  332 bytes; `LoadPackageLicenseMask` reads the 4 bytes at offset
+  `sizeof(XCONTENT_AGGREGATE_DATA)` = 328, so a full STFS header cannot
+  carry the tail convention — the raw-dump leg is the one that works with
+  the 9019af7 reader, which accepts both). Dump's `file_name` decoded as
+  exactly the dir name `54EE4F58….243`, content_type = 0x00000002.
+  `license_mask` cvar deliberately unset (it exists in this SDK and
+  returns via `XamContentGetLicenseMask` — keep as the fallback lever if
+  the game gates the DLC mode on the mask rather than enumeration
+  presence; futari's game never needed it).
 
+## Iteration 3 (2026-10-22) — first build clean; config staging verified
+
+- `cmake --preset win-amd64-release` + build (902 targets): configure 99s,
+  full compile+link clean, only benign upstream warnings. Artifacts in
+  `out/build/win-amd64-release/`: `mushi.exe`, the four `mushi_dat*.dll`s,
+  `rexruntime.dll`, `rexgpu-xenos.dll` — plus **`mushi.toml` staged next to
+  the exe by the POST_BUILD rule on first build** (2162-byte template).
+  The config-staging convention is verified end-to-end: a clean machine
+  build now starts with the curated settings on the very first launch,
+  which the sibling ports never did.
+- Status: run the static hint derivation pass next (the one class the
+  analyzer missed: indirect-only functions), then first playtest.
+
+## Known-unknowns going into playtest (do not assume — verify)
 - Module → in-game mode-name mapping (all four) — record from `XexLoadImage`
   log lines during playtest, then update AGENTS.md table.
 - Whether the modules are strictly mutually exclusive (mode menu unload

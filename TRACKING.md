@@ -66,7 +66,42 @@ authoritative history for every convention cited below.
   do not re-introduce).
 - Status: codegen + first build pending; playtest pending.
 
-## Known-unknowns going into codegen (do not assume — verify)
+## Iteration 2 (2026-10-22) — first codegen pass (clean, zero gate sites)
+
+- First `rexglue codegen mushi_manifest.toml --target dat12` (raw, no hints)
+  failed validation on 10 unresolved `b` targets in the ENTRYPOINT shell —
+  the unreached-by-PDATA class (all between known functions:
+  `0x82095120/128/138`, `0x82096B28`, `0x820963D8/E0/E8`, `0x820AA458`,
+  `0x820B7C40`, `0x820B7608`). Seeded as name-only hints into a new
+  `mushi_hints.toml` (10 entries) and wired the shell include list
+  (`["mushi_hints.toml", "mushi_functions.toml"]`). NOTE: dfkbl never hit
+  this at codegen time (its fork SDK 0.9 analysis validated looser or its
+  seeded TOML file matched); the strict per-target validation here matched
+  futari's first-pass experience.
+- After seeding: ALL FIVE targets codegen'd clean in one per-target pass
+  (dat12 4.3s incl. entrypoint regen; dat112/dat163/dat111 1.1s each,
+  "module(s) up to date" skipped where already fresh). **Zero unresolved
+  calls/branches at codegen** — the modules shared the shell's analysis
+  (all four modules validated without any module-side static seeds; module
+  code coverage far larger than the per-target write counts suggest, since
+  gap-fill+merge covers the whole code section).
+- Glue hand-merge applied: `generated/default/dll_targets.cmake` and
+  `module_registry.cpp` written with all four modules (`mushi_dat12`,
+  `mushi_dat112`, `mushi_dat163`, `mushi_dat111`); auto-codegen disabled in
+  `generated/rexglue.cmake` (commented outputs block, DISABLED note, same
+  as dfkbl's committed copy).
+- **Embedded-trap gate baseline: ZERO sites** (266 informational switch
+  traps — the SDK's still-emitted `Switch case out of range __builtin_trap()`
+  class; never fatal in the gate; monitor during playtest for actual
+  `0xC000001D`/`UD2` crashes, i.e. a table whose `cases != bounds+1`).
+  This is the cleanest first pass across all three sibling ports so far
+  (futari hit this class hard on its eight modules in early iterations).
+- Status: build pending; hints derivation pass (build_module_hints.ps1)
+  queued after the build to cover the indirect-call-only function class
+  dynamically populated per-title (XenonRecomp full-coverage diff); initial
+  playtest next.
+
+## Known-unknowns going into playtest (do not assume — verify)
 
 - Module → in-game mode-name mapping (all four) — record from `XexLoadImage`
   log lines during playtest, then update AGENTS.md table.

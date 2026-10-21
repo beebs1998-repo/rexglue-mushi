@@ -1,0 +1,35 @@
+# mushi_hints.toml - function-entry hints for the entrypoint (shell).
+#
+# Currently hand-seeded bootstrap entries only (name-only): the initial
+# codegen validation rejected these 10 unreachable-by-static-analysis b
+# targets inside the shell code range. The full generated hints set
+# (scripts/build_module_hints.ps1) replaces this file's content afterwards.
+[functions."0x82095120"]
+name = "sub_82095120"
+
+[functions."0x82095128"]
+name = "sub_82095128"
+
+[functions."0x82096B28"]
+name = "sub_82096B28"
+
+[functions."0x82095138"]
+name = "sub_82095138"
+
+[functions."0x820963E0"]
+name = "sub_820963E0"
+
+[functions."0x820963D8"]
+name = "sub_820963D8"
+
+[functions."0x820AA458"]
+name = "sub_820AA458"
+
+[functions."0x820B7C40"]
+name = "sub_820B7C40"
+
+[functions."0x820B7608"]
+name = "sub_820B7608"
+
+[functions."0x820963E8"]
+name = "sub_820963E8"

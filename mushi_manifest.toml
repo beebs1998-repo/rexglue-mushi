@@ -22,7 +22,7 @@ game_root = "game_data"
 [entrypoint]
 file_path = "game_data/default.xex"
 out_directory_path = "generated/default"
-includes = ["mushi_functions.toml"]
+includes = ["mushi_hints.toml", "mushi_functions.toml"]
 
 [[modules]]
 guest_path = "dat12.bin"

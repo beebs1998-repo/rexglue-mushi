@@ -75,7 +75,7 @@ repo, not committed).
 | --- | --- |
 | `src/` | Host application (`main.cpp`, `mushi_app.h`) |
 | `generated/default/` | Recompiled entrypoint + `dll_targets.cmake` / `module_registry.cpp` |
-| `generated/dat12|dat112|dat163|dat111/` | Recompiled game-mode modules |
+| `generated/dat12,dat112,dat163,dat111/` | Recompiled game-mode modules |
 | `generated/rexglue.cmake` | SDK/CMake glue (codegen auto-generation disabled — see below) |
 | `mushi_manifest.toml` | Codegen manifest (entrypoint + 4 modules) |
 | `mushi*_functions.toml` | Extra dynamic entrypoints registered per target |
